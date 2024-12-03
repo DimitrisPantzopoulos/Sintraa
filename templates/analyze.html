@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: url("../static/BackgroundImage.jpg");
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #4CAF50;
+        }
+
+        .item-info {
+            margin-top: 30px;
+            font-size: 1.1em;
+        }
+
+        .item-info p {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .item-info strong {
+            color: #4CAF50;
+        }
+
+        .analysis-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Item Analysis: {{ name }}</h1>
+
+        <div class="item-info">
+            <p><strong>Description:</strong> {{ description }}</p>
+            <p><strong>Sales:</strong> {{ sales }}</p>
+            <p><strong>Stock Remaining:</strong> {{ stock }}</p>
+            <p><strong>Average Consumption Rate:</strong> {{ consumption }}</p>
+            <p><strong>Price:</strong> ${{ price }}</p>
+            <p><strong>AVC:</strong> ${{ avc }}</p>
+            <p><strong>Category:</strong> {{ category }}</p>
+        </div>
+
+        <div class="analysis-info">
+            <h2>Analysis Results</h2>
+            <p><strong>Recommended Action:</strong> {{ action }}</p>
+            <p><strong>Adjusted Price:</strong> ${{ adjusted_price }}</p>
+            <p><strong>Greta's Action:</strong> {{ greta_action }}</p>
+            <p><strong>Stephen's Action:</strong> {{ stephen_action }}</p>
+        </div>
+
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>

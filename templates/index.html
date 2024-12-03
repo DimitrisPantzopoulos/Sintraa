@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintraa</title>
+
+    <style>
+        /* General reset and font styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("../static/BackgroundImage.jpg");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        /* Title */
+        .TitleStyle {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 50px;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        /* Content Box Layout */
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 20px 0;
+        }
+
+        /* Individual item container */
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Item box style */
+        .itembox {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .itembox:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Title and description inside the item box */
+        .itembox h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .itembox p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Analyze button box */
+        .AnalyzeBox {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease;
+        }
+
+        .AnalyzeBox:hover {
+            background-color: #218838;
+        }
+
+        .AddDatabase {
+            width: 100%;
+            background-color: #007bff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease;
+        }
+
+        .AddDatabase:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="TitleStyle">
+        <h1>Welcome To Sintraa!</h1>
+    </div>
+
+    <div class="content">
+        <div class="box">
+            {% for item in items %}
+            <div class="itembox">
+                <h2>{{ item['Name'] }}</h2>
+                <p>{{ item['Description'] }}</p>
+
+                <div class="AnalyzeBox" 
+                    data-name="{{ item['Name'] }}" 
+                    data-description="{{ item['Description'] }}" 
+                    data-sales="{{ item['Sales'] }}" 
+                    data-stock="{{ item['StockRemaining'] }}" 
+                    data-consumption="{{ item['AvgConsumptionRate'] }}" 
+                    data-price="{{ item['Price'] }}" 
+                    data-avc="{{ item['AVC'] }}" 
+                    data-category="{{ item['Category'] }}"
+                    onclick="analyzeItem(this)">
+                    <h1>Analyze Item</h1>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="AddDatabase">
+                <a href="/AddNewItem">
+                    <h1>Add To Database</h1>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function analyzeItem(element) {
+            // Get the item data from the clicked element's data attributes
+            var name = encodeURIComponent(element.getAttribute('data-name'));
+            var description = encodeURIComponent(element.getAttribute('data-description'));
+            var sales = encodeURIComponent(element.getAttribute('data-sales'));
+            var stock = encodeURIComponent(element.getAttribute('data-stock'));
+            var consumption = encodeURIComponent(element.getAttribute('data-consumption'));
+            var price = encodeURIComponent(element.getAttribute('data-price'));
+            var avc = encodeURIComponent(element.getAttribute('data-avc'));
+            var category = encodeURIComponent(element.getAttribute('data-category'));
+
+            window.location.href = `/analyze?name=${name}&description=${description}&sales=${sales}&stock=${stock}&consumption=${consumption}&price=${price}&avc=${avc}&category=${category}`;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+Name,Description,Sales,StockRemaining,AvgConsumptionRate,Price,AVC,Category
+Burger,Bacon and cheese Burger,15,90,0.4,10,5,Dessert
+Cheesecake,Rich cheesecake,30,50,0.6,8,4,Dessert
+Caesar Salad,Fresh caesar salad,45,20,1.2,12,6,Appetizer
+Spaghetti,Classic spaghetti with marinara sauce,60,40,0.9,15,7,Main Course
+Tiramisu,Tiramisu,93,0.07,0.75,13.55,5.15,Desert
+Tiramisu,Tiramisu,15,90,0.4,10,5,Desert
